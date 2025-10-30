@@ -6,12 +6,18 @@ import (
 	"os"
 	"strings"
 
+	"github.com/BerylCAtieno/wordle-agent/internal/dictionary"
 	"github.com/BerylCAtieno/wordle-agent/internal/game"
 	"github.com/BerylCAtieno/wordle-agent/internal/messages"
 )
 
 func main() {
-	gm := game.NewGameMaster("CRANE")
+	dict, err := dictionary.LoadFromFile("../internal/dictionary/words.txt")
+	if err != nil {
+		fmt.Println("error loading dictionary file")
+	}
+
+	gm := game.NewGameMaster("CRANE", dict)
 	gm.PrintIntro()
 
 	reader := bufio.NewReader(os.Stdin)
