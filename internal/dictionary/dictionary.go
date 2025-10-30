@@ -2,6 +2,7 @@ package dictionary
 
 import (
 	"bufio"
+	"math/rand"
 	"os"
 	"strings"
 )
@@ -34,4 +35,12 @@ func LoadFromFile(path string) (*Dictionary, error) {
 // IsValid checks if a word exists in the dictionary.
 func (d *Dictionary) IsValid(word string) bool {
 	return d.words[strings.ToLower(word)]
+}
+
+func (d *Dictionary) RandomWord() string {
+	keys := make([]string, 0, len(d.words))
+	for k := range d.words {
+		keys = append(keys, k)
+	}
+	return keys[rand.Intn(len(keys))]
 }
