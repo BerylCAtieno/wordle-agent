@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+//go:embed agent.json
 var AgentCardData []byte
 
 func LoadAgentCard() error {

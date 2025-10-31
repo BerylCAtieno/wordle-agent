@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/BerylCAtieno/wordle-agent/internal/a2a"
 	"github.com/BerylCAtieno/wordle-agent/internal/agent"
@@ -50,7 +51,11 @@ func main() {
 
 	// --- End A2A Integration Points ---
 
-	port := "5001"
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "5001" // fallback for local dev
+	}
+
 	log.Printf("🎮 Wordle A2A Agent starting on 0.0.0.0:%s", port)
 	if err := router.Run(":" + port); err != nil {
 		log.Fatal(fmt.Errorf("server failed to start: %w", err))
