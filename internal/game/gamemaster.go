@@ -1,4 +1,3 @@
-// Holds the secret word and evaluates guesses.
 package game
 
 import (
@@ -47,7 +46,7 @@ func (gm *GameMaster) EvaluateGuess(msg messages.Message) messages.Message {
 	}
 }
 
-// Evaluates a guess and returns 🟩🟨⬜ feedback
+// Evaluates a guess and returns 🟩🟨⬛ feedback
 func (gm *GameMaster) evaluateGuess(guess string) string {
 	result := make([]rune, len(gm.Secret))
 
@@ -57,7 +56,7 @@ func (gm *GameMaster) evaluateGuess(guess string) string {
 		} else if strings.ContainsRune(gm.Secret, ch) {
 			result[i] = '🟨'
 		} else {
-			result[i] = '⬜'
+			result[i] = '⬛'
 		}
 	}
 	return string(result)
@@ -67,6 +66,6 @@ func (gm *GameMaster) PrintIntro() {
 	fmt.Println("=====================================")
 	fmt.Println("🤖 Welcome to Agent Wordle!")
 	fmt.Println("Try to guess the 5-letter secret word.")
-	fmt.Println("🟩 = correct, 🟨 = wrong position, ⬜ = not in word.")
+	fmt.Println("🟩 = correct, 🟨 = wrong position, ⬛ = not in word.")
 	fmt.Println("=====================================")
 }
