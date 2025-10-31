@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "name": "Wordle Brain Teaser",
+  "description": "A fun Wordle game to wake up your brain before work! Guess the 5-letter word in 6 attempts.",
+  "capabilities": {
+    "streaming": false,
+    "interactive": true,
+    "stateful": true
+  },
+  "endpoints": {
+    "a2a": "/"
+  },
+  "metadata": {
+    "category": "games",
+    "tags": ["wordle", "puzzle", "brain-teaser"],
+    "author": "Your Name",
+    "icon": "🎮"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "active": true,
+  "category": "games",
+  "description": "A Wordle game to wake up employee brains before starting work",
+  "id": "wordle_brain_teaser",
+  "name": "Wordle Brain Teaser",
+  "long_description": "Play Wordle to get your brain ready for the day! Guess the 5-letter word in 6 attempts. Perfect for morning warm-ups or quick breaks.\n\nHow to play:\n- Type 'new game' to start\n- Enter 5-letter words to guess\n- 🟩 = correct letter and position\n- 🟨 = correct letter, wrong position\n- ⬛ = letter not in word\n\nYou have 6 attempts to find the word!",
+  "short_description": "Play Wordle to warm up your brain - guess the word in 6 tries!",
+  "nodes": [
+    {
+      "id": "wordle_agent",
+      "name": "Wordle Game Agent",
+      "parameters": {},
+      "position": [400, 200],
+      "type": "a2a/generic-a2a-node",
+      "typeVersion": 1,
+      "url": "https://your-deployment-url.com"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
