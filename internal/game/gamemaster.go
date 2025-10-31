@@ -5,7 +5,6 @@ import (
 	"strings"
 
 	"github.com/BerylCAtieno/wordle-agent/internal/dictionary"
-	"github.com/BerylCAtieno/wordle-agent/internal/messages"
 )
 
 type GameMaster struct {
@@ -24,26 +23,16 @@ func NewGameMaster(secret string, dict *dictionary.Dictionary) *GameMaster {
 
 func (gm *GameMaster) Name() string { return gm.NameID }
 
-func (gm *GameMaster) EvaluateGuess(msg messages.Message) messages.Message {
-	guess := strings.ToUpper(msg.Content)
+func (gm *GameMaster) EvaluateGuess(guess string) (feedback string, isValid bool) {
+	guess = strings.ToUpper(guess)
 
 	// Check if the word is valid
 	if !gm.Dictionary.IsValid(guess) {
-		return messages.Message{
-			From:    gm.Name(),
-			To:      msg.From,
-			Type:    messages.ErrorMessage,
-			Content: "Not a valid word in the dictionary",
-		}
+		return "", false
 	}
 
-	feedback := gm.evaluateGuess(guess)
-	return messages.Message{
-		From:    gm.Name(),
-		To:      msg.From,
-		Type:    messages.FeedbackMessage,
-		Content: feedback,
-	}
+	feedback = gm.evaluateGuess(guess)
+	return feedback, true
 }
 
 // Evaluates a guess and returns 🟩🟨⬛ feedback

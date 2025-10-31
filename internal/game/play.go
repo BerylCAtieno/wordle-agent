@@ -7,11 +7,10 @@ import (
 	"strings"
 
 	"github.com/BerylCAtieno/wordle-agent/internal/dictionary"
-	"github.com/BerylCAtieno/wordle-agent/internal/messages"
 )
 
 func PlayGame() {
-	dict, err := dictionary.LoadFromFile("internal/dictionary/words.txt")
+	dict, err := dictionary.LoadDictionary("internal/dictionary/words.txt")
 	if err != nil {
 		fmt.Printf("Error loading dictionary: %v\n", err)
 		os.Exit(1)
@@ -36,26 +35,12 @@ func PlayGame() {
 			continue
 		}
 
-		msg := messages.Message{
-			From:    "HumanPlayer",
-			To:      gm.Name(),
-			Type:    messages.GuessMessage,
-			Content: guess,
-		}
-
 		// GameMaster evaluates
-		feedback := gm.EvaluateGuess(msg)
+		feedback, _ := gm.EvaluateGuess(guess)
 
-		// Check if it's an error message (invalid word)
-		if feedback.Type == messages.ErrorMessage {
-			fmt.Printf("❌ %s\n", feedback.Content)
-			i--
-			continue
-		}
+		fmt.Printf("Feedback: %s\n", feedback)
 
-		fmt.Printf("Feedback: %s\n", feedback.Content)
-
-		if feedback.Content == "🟩🟩🟩🟩🟩" {
+		if feedback == "🟩🟩🟩🟩🟩" {
 			fmt.Println("🎉 Congratulations! You guessed the word!")
 			return
 		}

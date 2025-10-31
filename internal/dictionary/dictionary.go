@@ -13,7 +13,7 @@ type Dictionary struct {
 }
 
 // LoadFromFile loads words from a given file path.
-func LoadFromFile(path string) (*Dictionary, error) {
+func LoadDictionary(path string) (*Dictionary, error) {
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, err
