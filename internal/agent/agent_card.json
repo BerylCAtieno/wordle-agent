@@ -1,0 +1,38 @@
+{
+  "name": "Wordle",
+  "description": "An interactive Wordle game agent that accepts 5-letter guesses and provides feedback using A2A protocol. Type 'new game' to start.",
+  "url": "http://localhost:5001",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "Gaming Organization",
+    "url": "https://example.com/agent-provider"
+  },
+  "documentationUrl": "http://localhost:5001/docs",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+  "skills": [
+    {
+      "id": "wordle_game_play",
+      "name": "Wordle Guessing Game",
+      "description": "Allows a user to play a game of Wordle by submitting 5-letter guesses.",
+      "inputModes": ["text/plain"],
+      "outputModes": ["application/json"],
+      "examples": [
+        {
+          "input": { "parts": [{ "text": "CRANE" }] },
+          "output": { "parts": [{ "text": "Attempt 1/6..." }] }
+        },
+        {
+          "input": { "parts": [{ "text": "new game" }] },
+          "output": { "parts": [{ "text": "New game started..." }] }
+        }
+      ]
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": false
+}
