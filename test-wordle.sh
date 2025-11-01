@@ -2,7 +2,7 @@
 
 # Test 1: Start a new game
 echo "=== Test 1: Starting new game ==="
-curl -X POST http://localhost:5001/ \
+curl -X POST http://localhost:5001/a2a/wordle \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
@@ -29,7 +29,7 @@ curl -X POST http://localhost:5001/ \
 
 echo -e "\n\n=== Test 2: Make a guess ==="
 # Test 2: Make a guess (use the contextId from Test 1)
-curl -X POST http://localhost:5001/ \
+curl -X POST http://localhost:5001/a2a/wordle \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
@@ -55,7 +55,7 @@ curl -X POST http://localhost:5001/ \
   }' | jq '.'
 
 echo -e "\n\n=== Test 3: Invalid word ==="
-curl -X POST http://localhost:5001/ \
+curl -X POST http://localhost:5001/a2a/wordle \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",

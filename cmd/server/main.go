@@ -47,7 +47,7 @@ func main() {
 
 	// 2. JSON-RPC Communication Endpoint (POST /)
 	// All A2A methods (message/send, execute) are routed here.
-	router.POST("/", wordleHandler.HandleA2ARequest)
+	router.POST("/a2a/wordle", wordleHandler.HandleA2ARequest)
 
 	// --- End A2A Integration Points ---
 
