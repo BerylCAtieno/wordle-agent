@@ -10,11 +10,13 @@
     {
       "id": "wordle_agent",
       "name": "Wordle Game Agent",
-      "parameters": {},
+      "parameters": {
+          "maintainContext": true
+      },
       "position": [400, 200],
-      "type": "a2a/generic-a2a-node",
+      "type": "a2a/mastra-a2a-node",
       "typeVersion": 1,
-      "url": "https://wordle-agent-production.up.railway.app/"
+      "url": "https://wordle-agent-production.up.railway.app/a2a/wordle"
     }
   ],
   "pinData": {},

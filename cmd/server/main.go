@@ -19,7 +19,7 @@ func main() {
 	}
 
 	// 2. Initialize the Wordle dictionary and handler
-	dict, err := dictionary.LoadDictionary("../../internal/dictionary/words.txt")
+	dict, err := dictionary.LoadDictionary("internal/dictionary/words.txt")
 	if err != nil {
 		log.Fatalf("Failed to load dictionary: %v", err)
 	}
